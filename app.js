@@ -11,6 +11,11 @@ app.use(express.json()); // If you need to handle JSON requests
 const genAI = new GoogleGenerativeAI("Your API key");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+// Simple route to check server status
+app.get('/hello', (req, res) => {
+  res.send('Hello, World!');
+});
+
 // Route to get content from the Google API and send it to the frontend
 app.get('/generate-content', async (req, res) => {
   const prompt = req.query.prompt || "Describe Express.js in short"; // Use query prompt or default one
